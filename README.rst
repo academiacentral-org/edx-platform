@@ -1,3 +1,35 @@
+mooc.academiacentral.org
+------------------------
+.. image:: https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg
+     :target: https://lawrencemcdaniel.com
+     :alt: Hack.d Lawrence McDaniel
+
+This is the edx-platform fork for the Open edX installation `mooc.academiacentral.org <https://mooc.academiacentral.org>`_.
+Note that the edxapp servers for mooc.academiacentral.org are not configured to automatically use this fork during platform updates. 
+For more information on upgrading the Open edX platform see:
+
+.. _Upgrading Open edX: https://blog.lawrencemcdaniel.com/upgrading-open-edx/
+.. _How Stanford Runs Its Own Fork: https://open.edx.org/blog/how-stanford-runs-its-own-fork/
+
+
+
+Change Log
+----------
+- McDaniel mar-2021: 
+1. Gradebook name column was modified. `See this commit <https://github.com/academiacentral-org/edx-platform/tree/990f65ee419257afe101ec28827d6b639e9cb7d5>`_. This changes the grade book "username" column to instead be "Last Name, First Name".
+2. Base email template (set logo, etc.) /edx/app/edxapp/edx-platform/openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+3. Modify enrollment email notification. add University name. add custom sentence about intro video. /edx/app/edxapp/edx-platform/lms/templates/instructor/edx_ace/allowedenroll/email/body.html
+4. prevent ENABLE_MKTG_SITE from 
+   - redirecting the home page: /edx/app/edxapp/edx-platform/lms/djangoapps/branding/views.py
+   - disabling course discovery page: /edx/app/edxapp/edx-platform/lms/djangoapps/branding/views.py
+   - disabling course about page: /edx/app/edxapp/edx-platform/lms/djangoapps/courseware/views/views.py
+   - /edx/app/edxapp/edx-platform/lms/djangoapps/instructor/enrollment.py
+5. Fix "Sign in" link on email base template: /edx/app/edxapp/edx-platform/openedx/core/djangoapps/ace_common/templates/ace_common/edx_ace/common/base_body.html
+6. set min_price to zero for verified course mode: /edx/app/edxapp/edx-platform/lms/envs/common.py
+   change COURSE_MODE_DEFAULTS from 'Audit' to 'Honor'
+
+Open edX
+--------
 This is the core repository of the Open edX software. It includes the LMS
 (student-facing, delivering courseware), and Studio (course authoring)
 components.
@@ -86,5 +118,5 @@ Reporting Security Issues
 Please do not report security issues in public. Please email
 security@edx.org.
 
-.. _individual contributor agreement: https://openedx.org/wp-content/uploads/2019/01/individual-contributor-agreement.pdf
+.. _individual contributor agreement: https://openedx.org/cla
 .. _CONTRIBUTING: https://github.com/edx/edx-platform/blob/master/CONTRIBUTING.rst
