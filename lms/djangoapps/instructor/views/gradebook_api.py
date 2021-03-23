@@ -91,13 +91,20 @@ def get_grade_book_page(request, course, course_key):
         student_info = [
             {
                 'username': student.username,
+
+                # mcdaniel mar-2021: add a fully formatted first & last name
+                # for the gradebook recordset
+                'full_name': student.last_name.capitalize() + ',' + student.first_name.capitalize() if len(student.last_name) > 0 else student.email,
+
                 'id': student.id,
                 'email': student.email,
                 'grade_summary': CourseGradeFactory().read(student, course).summary
             }
             for student in enrolled_students
         ]
-    return student_info, page
+        # mcdaniel: return results sorted by last name
+        return sorted(student_info, key = lambda i: i['full_name']), page
+        #return student_info, page
 
 
 @transaction.non_atomic_requests
