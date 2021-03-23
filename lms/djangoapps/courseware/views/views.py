@@ -624,8 +624,13 @@ class CourseTabView(EdxFragmentView):
         Returns the URL to use to enroll in the specified course.
         """
         url_to_enroll = reverse('about_course', args=[text_type(course_key)])
-        if settings.FEATURES.get('ENABLE_MKTG_SITE'):
-            url_to_enroll = marketing_link('COURSES')
+
+        # mcdaniel mar-2021
+        # we want ENABLE_MKTG_SITE == true bc we use this for static pages
+        # like contact, tos, honor, privacy, etc. but we do not want
+        # to use it for the mooc page.
+        #if settings.FEATURES.get('ENABLE_MKTG_SITE'):
+        #    url_to_enroll = marketing_link('COURSES')
         return url_to_enroll
 
     @staticmethod

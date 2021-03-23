@@ -1066,17 +1066,19 @@ WIKI_ENABLED = True
 
 ###
 
+# mcdaniel mar-2021: changed from 'Audit' to 'Honor'
 COURSE_MODE_DEFAULTS = {
     'bulk_sku': None,
     'currency': u'usd',
     'description': None,
     'expiration_datetime': None,
     'min_price': 0,
-    'name': _(u'Audit'),
+    'name': _(u'Honor'),
     'sku': None,
-    'slug': u'audit',
+    'slug': u'honor',
     'suggested_prices': '',
 }
+
 
 # IP addresses that are allowed to reload the course, etc.
 # TODO (vshnayder): Will probably need to change as we get real access control in.

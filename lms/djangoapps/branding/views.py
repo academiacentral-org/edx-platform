@@ -45,17 +45,21 @@ def index(request):
                 settings.FEATURES.get('ALWAYS_REDIRECT_HOMEPAGE_TO_DASHBOARD_FOR_AUTHENTICATED_USER', True)):
             return redirect('dashboard')
 
-    enable_mktg_site = configuration_helpers.get_value(
-        'ENABLE_MKTG_SITE',
-        settings.FEATURES.get('ENABLE_MKTG_SITE', False)
-    )
+    # mcdaniel mar-2021
+    # we want ENABLE_MKTG_SITE == true bc we use this for static pages
+    # like contact, tos, honor, privacy, etc. but we do not want
+    # to use it for the mooc page.
+    #enable_mktg_site = configuration_helpers.get_value(
+    #    'ENABLE_MKTG_SITE',
+    #    settings.FEATURES.get('ENABLE_MKTG_SITE', False)
+    #)
 
-    if enable_mktg_site:
-        marketing_urls = configuration_helpers.get_value(
-            'MKTG_URLS',
-            settings.MKTG_URLS
-        )
-        return redirect(marketing_urls.get('ROOT'))
+    #if enable_mktg_site:
+    #    marketing_urls = configuration_helpers.get_value(
+    #        'MKTG_URLS',
+    #        settings.MKTG_URLS
+    #    )
+    #    return redirect(marketing_urls.get('ROOT'))
 
     domain = request.META.get('HTTP_HOST')
 
@@ -88,13 +92,17 @@ def courses(request):
     to that. Otherwise, if subdomain branding is on, this is the university
     profile page. Otherwise, it's the edX courseware.views.views.courses page
     """
-    enable_mktg_site = configuration_helpers.get_value(
-        'ENABLE_MKTG_SITE',
-        settings.FEATURES.get('ENABLE_MKTG_SITE', False)
-    )
+    # mcdaniel mar-2021
+    # we want ENABLE_MKTG_SITE == true bc we use this for static pages
+    # like contact, tos, honor, privacy, etc. but we do not want
+    # to use it for the mooc page.
+    #enable_mktg_site = configuration_helpers.get_value(
+    #    'ENABLE_MKTG_SITE',
+    #    settings.FEATURES.get('ENABLE_MKTG_SITE', False)
+    #)
 
-    if enable_mktg_site:
-        return redirect(marketing_link('COURSES'), permanent=True)
+    #if enable_mktg_site:
+    #    return redirect(marketing_link('COURSES'), permanent=True)
 
     if not settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
         raise Http404

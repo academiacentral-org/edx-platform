@@ -415,13 +415,19 @@ def get_email_params(course, auto_enroll, secure=True, course_key=None, display_
     )
 
     # We can't get the url to the course's About page if the marketing site is enabled.
-    course_about_url = None
-    if not settings.FEATURES.get('ENABLE_MKTG_SITE', False):
-        course_about_url = u'{proto}://{site}{path}'.format(
-            proto=protocol,
-            site=stripped_site_name,
-            path=reverse('about_course', kwargs={'course_id': course_key})
-        )
+    # We can't get the url to the course's About page if the marketing site is enabled.
+    # mcdaniel mar-2021
+    # we want ENABLE_MKTG_SITE == true bc we use this for static pages
+    # like contact, tos, honor, privacy, etc. but we do not want
+    # to use it for the mooc page.
+    #course_about_url = None
+    #if not settings.FEATURES.get('ENABLE_MKTG_SITE', False):
+
+    course_about_url = u'{proto}://{site}{path}'.format(
+        proto=protocol,
+        site=stripped_site_name,
+        path=reverse('about_course', kwargs={'course_id': course_key})
+    )
 
     is_shib_course = uses_shib(course)
 
