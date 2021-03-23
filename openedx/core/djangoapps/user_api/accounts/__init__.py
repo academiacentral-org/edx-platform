@@ -38,15 +38,19 @@ VISIBILITY_PREFIX = 'visibility.'
 # Translators: This message is shown when the Unicode usernames are NOT allowed.
 # It is shown to users who attempt to create a new account using invalid characters
 # in the username.
+#
+# mcdaniel mar-2021: add warning to not use spaces.
 USERNAME_INVALID_CHARS_ASCII = _(
-    u"Usernames can only contain letters (A-Z, a-z), numerals (0-9), underscores (_), and hyphens (-)."
+    u"Usernames can only contain letters (A-Z, a-z), numerals (0-9), underscores (_), and hyphens (-), and should not include blank spaces."
 )
 
 # Translators: This message is shown only when the Unicode usernames are allowed.
 # It is shown to users who attempt to create a new account using invalid characters
 # in the username.
+#
+# mcdaniel mar-2021: add warning to not use spaces.
 USERNAME_INVALID_CHARS_UNICODE = _(
-    u"Usernames can only contain letters, numerals, and @/./+/-/_ characters."
+    u"Usernames can only contain letters, numerals, and @/./+/-/_ characters. Do not use blank spaces."
 )
 
 # Translators: This message is shown to users who attempt to create a new account using
