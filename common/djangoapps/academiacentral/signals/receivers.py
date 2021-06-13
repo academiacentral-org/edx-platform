@@ -50,7 +50,7 @@ def set_id_verification_status(auth_entry, strategy, details, user=None, *args, 
         )
 
         AUDIT_LOG.info(u"ID Verification for user '{user_id}' approved by '{reviewer}' SSO.".format(
-            user_id=user, reviewer="common.djangoapps.am.utils.set_id_verification_status()"
+            user_id=user, reviewer="common.djangoapps.academiacentral.signals.receivers.set_id_verification_status()"
         ))
 
 @receiver(ENROLLMENT_TRACK_UPDATED)

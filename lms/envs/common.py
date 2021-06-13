@@ -4173,4 +4173,4 @@ DEFAULT_EMAIL_LOGO_URL = 'https://edx-cdn.org/v3/default/logo.png'
 
 # mcdaniel june-2021
 # Academia Central custom apps
-INSTALLED_APPS.append('common.djangoapps.academiacentral')
+INSTALLED_APPS.append('common.djangoapps.academiacentral.apps.AcademiaCentralConfig')
