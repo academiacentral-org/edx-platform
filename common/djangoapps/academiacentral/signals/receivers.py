@@ -23,7 +23,7 @@ AUDIT_LOG = logging.getLogger("audit")
 STATUS_APPROVED = "approved"
 
 @receiver(user_logged_in)
-def set_id_verification_status(auth_entry, strategy, details, user=None, *args, **kwargs):  # pylint: disable=unused-argument
+def set_id_verification_status(sender, request, user, **kwargs):  # pylint: disable=unused-argument
     """
     mcdaniel june-2021
     mooc.academiacentral.org does not require actual ID Verifications as part of upgrading stuents
